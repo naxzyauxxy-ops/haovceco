@@ -1,0 +1,29 @@
+name: HavocEco
+version: '${project.version}'
+main: club.havocsmp.eco.HavocEco
+api-version: '1.21'
+author: HavocSMP
+description: Fully customizable economy plugin with rubies, casino, invest, licensing and more.
+
+commands:
+  balance:
+    description: Check your or another player's balance.
+    aliases: [bal, money]
+  pay:
+    description: Pay another player money.
+  rubypay:
+    description: Transfer rubies to another player.
+  invest:
+    description: Invest money (a money sink that matures over time).
+  slots:
+    description: Play the slot machine with money or rubies.
+  jackpot:
+    description: Enter or start a jackpot round.
+  havoceco:
+    description: Admin command.
+    aliases: [heco]
+
+permissions:
+  havoceco.admin:
+    description: Access to HavocEco admin commands.
+    default: op

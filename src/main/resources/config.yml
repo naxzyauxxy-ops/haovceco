@@ -1,0 +1,93 @@
+# =====================================================================
+#  HavocEco - configuration
+#  Colors support legacy '&' codes and hex '&#RRGGBB' codes,
+#  matching the style of your existing config files.
+# =====================================================================
+
+ECONOMY:
+  STARTING-MONEY: 0.0
+  CURRENCY-SYMBOL: "$"
+  RUBY-NAME: "Rubies"
+
+STORAGE:
+  # database.yml is flushed to disk this often (only if something changed).
+  SAVE-INTERVAL-SECONDS: 60
+
+# --------- /invest : deliberate money sink -----------
+INVEST:
+  ENABLED: true
+  MIN-AMOUNT: 100
+  MAX-ACTIVE-AMOUNT: 1000000
+  # Fee removed from the economy immediately (this is what makes it a sink).
+  FEE-PERCENT: 5.0
+  # Payout = (amount - fee) * RETURN-RATE. Keep RETURN-RATE modest so it isn't OP.
+  RETURN-RATE: 1.05
+  MATURITY-MINUTES: 60
+
+# --------- casino -----------
+CASINO:
+  SLOTS:
+    ENABLED: true
+    MIN-BET: 100
+    MAX-BET: 100000
+    HOUSE-EDGE-PERCENT: 8.0
+  JACKPOT:
+    ENABLED: true
+    MIN-BET: 500
+    DURATION-SECONDS: 60
+    HOUSE-CUT-PERCENT: 5.0
+
+# --------- rubies -----------
+RUBIES:
+  PAY-ENABLED: true
+  # Manual master switch for double rubies (admin can also toggle at runtime).
+  DOUBLE-EVENT-ACTIVE: false
+  DOUBLE-EVENT-MULTIPLIER: 2
+  # Automatic scheduled double-ruby windows. Set EVERY-HOURS to 0 to disable.
+  DOUBLE-EVENT-SCHEDULE:
+    EVERY-HOURS: 0
+    DURATION-MINUTES: 30
+
+# --------- pearls & combat -----------
+PEARLS:
+  KEEP-ON-DEATH: true
+  NO-COMBAT-TAG: true
+  WIND-CHARGE-NO-COMBAT-TAG: true
+
+COMBAT:
+  # Set to 0 to disable HavocEco's built-in combat tag (e.g. if another plugin handles it).
+  TAG-SECONDS: 15
+
+# --------- totem effect retention -----------
+TOTEM:
+  # Keep Speed, Strength and Night Vision after a totem pop.
+  KEEP-EFFECTS: true
+
+# --------- spawn jump boost -----------
+SPAWN:
+  JUMP-BOOST:
+    ENABLED: true
+    WORLD: "world"
+    CENTER-X: 0
+    CENTER-Z: 0
+    RADIUS: 50
+    LEVEL: 2
+
+# --------- coordinate hiding (Bedrock / Media) -----------
+COORDS:
+  HIDE-ALLOWED: true
+
+# --------- cycling boss bar -----------
+BOSSBAR:
+  ENABLED: true
+  CYCLE-SECONDS: 6
+  COLOR: "RED"
+  STYLE: "SOLID"
+  MESSAGES:
+    - "&#f40d0d&lHavocsmp.club"
+    - "&f/store &7- support the server"
+    - "&f/discord &7- join the community"
+
+# --------- /live for Media+ -----------
+LIVE:
+  COOLDOWN-SECONDS: 10800   # 3 hours
