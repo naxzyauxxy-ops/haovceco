@@ -91,3 +91,10 @@ BOSSBAR:
 # --------- /live for Media+ -----------
 LIVE:
   COOLDOWN-SECONDS: 10800   # 3 hours
+  ANNOUNCEMENT: "&#f40d0d&lLIVE &f%player% is now live! &7%message%"
+
+# --------- wagers (coinflip) -----------
+WAGER:
+  ENABLED: true
+  MIN-BET: 100
+  HOUSE-TAX-PERCENT: 5.0

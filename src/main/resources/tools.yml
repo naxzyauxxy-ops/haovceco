@@ -1,0 +1,88 @@
+# =====================================================================
+#  Amethyst area-mining tools
+#  CUBE-SIZE is N in an NxNxN dig area (odd sizes center on the block;
+#  even sizes extend +1 on each axis).
+#  TYPE controls what blocks the tool affects:
+#    PICKAXE  -> stone/ore family
+#    SHOVEL   -> dirt/sand/gravel family
+#    AXE      -> logs/wood family
+#    SELL_AXE -> logs/wood family, auto-sell recommended
+#  AUTO-SELL true  -> mined blocks are sold instantly to money
+#  AUTO-SELL false -> mined blocks drop normally
+# =====================================================================
+TOOLS:
+  amethyst_pickaxe_3:
+    DISPLAY-NAME: "&#f40d0dAmethyst Pickaxe &7(3x3x3)"
+    MATERIAL: DIAMOND_PICKAXE
+    TYPE: PICKAXE
+    CUBE-SIZE: 3
+    AUTO-SELL: false
+    RUBY-PRICE: 500
+    LORE:
+      - "&7Mines a &f3x3x3 &7area."
+      - "&7Blocks drop normally."
+
+  amethyst_pickaxe_6:
+    DISPLAY-NAME: "&#f40d0dAmethyst Pickaxe &7(6x6x6)"
+    MATERIAL: DIAMOND_PICKAXE
+    TYPE: PICKAXE
+    CUBE-SIZE: 6
+    AUTO-SELL: true
+    RUBY-PRICE: 1500
+    LORE:
+      - "&7Mines a &f6x6x6 &7area."
+      - "&7Auto-sells to money."
+
+  amethyst_pickaxe_9:
+    DISPLAY-NAME: "&#f40d0dAmethyst Pickaxe &7(9x9x9)"
+    MATERIAL: NETHERITE_PICKAXE
+    TYPE: PICKAXE
+    CUBE-SIZE: 9
+    AUTO-SELL: true
+    RUBY-PRICE: 4000
+    LORE:
+      - "&7Mines a &f9x9x9 &7area."
+      - "&7Auto-sells to money."
+
+  amethyst_pickaxe_12:
+    DISPLAY-NAME: "&#f40d0dAmethyst Pickaxe &7(12x12x12)"
+    MATERIAL: NETHERITE_PICKAXE
+    TYPE: PICKAXE
+    CUBE-SIZE: 12
+    AUTO-SELL: true
+    RUBY-PRICE: 10000
+    LORE:
+      - "&7Mines a &f12x12x12 &7area."
+      - "&7Auto-sells to money."
+
+  amethyst_shovel_6:
+    DISPLAY-NAME: "&#f40d0dAmethyst Shovel &7(6x6x6)"
+    MATERIAL: DIAMOND_SHOVEL
+    TYPE: SHOVEL
+    CUBE-SIZE: 6
+    AUTO-SELL: false
+    RUBY-PRICE: 1200
+    LORE:
+      - "&7Digs a &f6x6x6 &7area of dirt/sand."
+
+  amethyst_sell_axe_6:
+    DISPLAY-NAME: "&#f40d0dAmethyst Sell Axe &7(6x6x6)"
+    MATERIAL: DIAMOND_AXE
+    TYPE: SELL_AXE
+    CUBE-SIZE: 6
+    AUTO-SELL: true
+    RUBY-PRICE: 1800
+    LORE:
+      - "&7Chops a &f6x6x6 &7area of logs."
+      - "&7Auto-sells to money."
+
+  amethyst_axe_6:
+    DISPLAY-NAME: "&#f40d0dAmethyst Axe &7(6x6x6)"
+    MATERIAL: DIAMOND_AXE
+    TYPE: AXE
+    CUBE-SIZE: 6
+    AUTO-SELL: false
+    RUBY-PRICE: 1400
+    LORE:
+      - "&7Chops a &f6x6x6 &7area of logs."
+      - "&7Blocks drop normally."

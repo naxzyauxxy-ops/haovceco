@@ -3,7 +3,7 @@ version: '${project.version}'
 main: club.havocsmp.eco.HavocEco
 api-version: '1.21'
 author: HavocSMP
-description: Fully customizable economy plugin with rubies, casino, invest, licensing and more.
+description: Fully customizable economy plugin with rubies, casino, invest, amethyst tools, wagers and more.
 
 commands:
   balance:
@@ -19,6 +19,21 @@ commands:
     description: Play the slot machine with money or rubies.
   jackpot:
     description: Enter or start a jackpot round.
+  rubyshop:
+    description: Open the ruby shop.
+  sell:
+    description: Open the sell menu, or /sell all | /sell hand.
+  worth:
+    description: Show the sell value of an item.
+  baltop:
+    description: View the money leaderboard (top 50).
+  live:
+    description: Announce you are live (Media+).
+  coords:
+    description: Toggle hiding your coordinates.
+  coinflip:
+    description: Open, accept or cancel a coinflip wager.
+    aliases: [cf]
   havoceco:
     description: Admin command.
     aliases: [heco]
@@ -26,4 +41,10 @@ commands:
 permissions:
   havoceco.admin:
     description: Access to HavocEco admin commands.
+    default: op
+  havoceco.live:
+    description: Allows use of /live (grant to Media+).
+    default: false
+  havoceco.live.bypass:
+    description: Bypass the /live cooldown.
     default: op

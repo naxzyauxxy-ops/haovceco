@@ -16,5 +16,6 @@ public class PlayerDataListener implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         plugin.database().ensurePlayer(e.getPlayer().getUniqueId(), e.getPlayer().getName());
+        plugin.coordHider().loadFor(e.getPlayer().getUniqueId());
     }
 }

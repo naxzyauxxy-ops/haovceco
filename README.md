@@ -62,20 +62,38 @@ Either way, drop the jar into your server's `plugins/` folder and restart.
 | Money sink | `/invest <amount>`, `/invest claim` |
 | Slots | `/slots <amount> [money|rubies]` |
 | Jackpot | `/jackpot <amount> [money|rubies]` |
+| Ruby shop (paged GUI) | `/rubyshop` |
+| Sell menu (bigger, multi-page) | `/sell` (menu), `/sell all`, `/sell hand` |
+| Worth lookup | `/worth` (hand) or `/worth <item>` |
+| Baltop 1-50 (placement before names) | `/baltop` |
+| Live announce (Media+, 3h cooldown) | `/live <message>` (perm `havoceco.live`) |
+| Hide coordinates toggle | `/coords` |
+| Coinflip wager (money/rubies) | `/cf <amount> [money|rubies]`, `/cf accept <player>`, `/cf cancel` |
+| Amethyst area tools (3/6/9/12 cube) | via `/rubyshop` or `/havoceco giveamethyst <id> [player]` |
 | Double-ruby events | scheduled via config + `/havoceco rubyevent on|off` |
 | Pearls kept on death | automatic (config toggle) |
 | Pearls/wind charges don't combat-tag | automatic (config toggle) |
 | Keep Speed/Strength/Night Vision on totem pop | automatic (config toggle) |
 | Spawn jump boost zone | automatic (config: center + radius) |
-| Cycling boss bar (Havocsmp.club / /store / /discord) | automatic + per-player toggle hook |
-| Admin | `/havoceco reload|givemoney|giverubies|rubyevent` |
+| Cycling boss bar | automatic + per-player toggle hook |
+| Admin | `/havoceco reload|givemoney|giverubies|giveamethyst|rubyevent` |
 
-### Still to build out
+### Config files
 
-These have config + hooks but need your world/GUI specifics wired in: `/rubyshop` GUI, the bigger
-Sell menu with multi-page categories, `/worth` GUI, baltop 1-50, `/live`, coordinate-hiding
-toggle, wagers, and the custom amethyst tools (3x3x3 -> 12x12x12). The manager pattern used here
-(a `Manager` class + a `Command` class + config in `Settings`) is the template to copy for each.
+- `config.yml` — every toggle and tunable (economy, invest, casino, rubies, pearls, combat, totem, spawn, bossbar, live, wager).
+- `worth.yml` — sell prices (your existing file ships with the plugin; edit freely).
+- `tools.yml` — defines the amethyst tools: cube size, type (pickaxe/shovel/axe/sell_axe), auto-sell vs drop, ruby price.
+- `database.yml` — player data, created automatically.
+
+### Notes on a couple of features
+
+- **Coordinate hiding** is client-side in Minecraft. `/coords` stores the preference in
+  `database.yml` and, on Java clients, enables reduced-debug-screen which hides the F3 coordinate
+  readout. For Bedrock (Geyser) the stored flag is exposed for your Geyser/floodgate setup to
+  consume, since Bedrock's coordinate display is governed by the world "show coordinates" rule.
+- **Amethyst tools** restrict what they break by type (pickaxe = stone/ore, shovel = dirt/sand,
+  axe = wood) and skip a blacklist (bedrock, containers, spawners, obsidian). Even cube sizes
+  (6/12) span N blocks by extending +1 on each axis from the mined block.
 
 ---
 
