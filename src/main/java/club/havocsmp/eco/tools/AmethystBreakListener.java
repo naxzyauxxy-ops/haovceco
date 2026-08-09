@@ -80,7 +80,7 @@ public class AmethystBreakListener implements Listener {
                         if (!matchesToolType(def, b.getType())) continue;
 
                         if (def.autoSell) {
-                            double price = plugin.worth().priceOf(b.getType());
+                            double price = plugin.toolsWorth().priceOf(b.getType());
                             if (price > 0) earned += price;
                             b.setType(Material.AIR);
                         } else {
@@ -93,7 +93,7 @@ public class AmethystBreakListener implements Listener {
 
             // Handle the center block per the tool's mode.
             if (def.autoSell) {
-                double price = plugin.worth().priceOf(center.getType());
+                double price = plugin.toolsWorth().priceOf(center.getType());
                 if (price > 0) earned += price;
                 e.setDropItems(false);
             }
@@ -102,6 +102,11 @@ public class AmethystBreakListener implements Listener {
         }
 
         if (def.autoSell && earned > 0) {
+            if (!plugin.economy().isReady()) {
+                // Vault/Voyager not available — refund by putting the block back to be safe.
+                player.sendActionBar(Text.color("&cAuto-sell disabled (economy unavailable)."));
+                return;
+            }
             plugin.economy().deposit(player.getUniqueId(), earned);
             player.sendActionBar(Text.color("&aSold " + broken + " blocks for &#f40d0d$" + Numbers.comma(earned)));
         }

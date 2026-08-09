@@ -34,9 +34,9 @@ public class AdminCommand implements CommandExecutor, TabCompleter {
         switch (args[0].toLowerCase()) {
             case "reload" -> {
                 plugin.reloadConfig();
-                plugin.worth().load();
+                plugin.toolsWorth().load();
                 plugin.amethystTools().load();
-                sender.sendMessage(Text.color("&aConfig, worth and tools reloaded."));
+                sender.sendMessage(Text.color("&aConfig, tools-worth and tools reloaded."));
             }
             case "giveamethyst" -> {
                 if (args.length < 2) { sender.sendMessage(Text.color("&cUsage: /havoceco giveamethyst <tool-id> [player]")); return true; }

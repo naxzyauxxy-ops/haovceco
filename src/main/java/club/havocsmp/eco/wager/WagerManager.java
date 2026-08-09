@@ -80,6 +80,7 @@ public class WagerManager {
 
     private boolean charge(UUID uuid, double amount, String currency) {
         if (currency.equalsIgnoreCase("rubies")) return plugin.rubies().take(uuid, (long) amount);
+        if (!plugin.economy().isReady()) return false;
         return plugin.economy().withdraw(uuid, amount);
     }
 

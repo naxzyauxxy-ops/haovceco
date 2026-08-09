@@ -149,6 +149,7 @@ public class CasinoManager {
         if (currency.equalsIgnoreCase("rubies")) {
             return plugin.rubies().take(uuid, (long) bet);
         }
+        if (!plugin.economy().isReady()) return false;
         return plugin.economy().withdraw(uuid, bet);
     }
 

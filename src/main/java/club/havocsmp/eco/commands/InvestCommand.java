@@ -23,6 +23,10 @@ public class InvestCommand implements CommandExecutor {
             sender.sendMessage("Players only.");
             return true;
         }
+        if (!plugin.economy().isReady()) {
+            p.sendMessage(Text.color("&cInvest is unavailable: economy plugin not detected."));
+            return true;
+        }
         var inv = plugin.invest();
 
         if (args.length == 0) {

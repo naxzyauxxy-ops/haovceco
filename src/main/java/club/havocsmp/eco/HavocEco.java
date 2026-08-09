@@ -3,11 +3,9 @@ package club.havocsmp.eco;
 import club.havocsmp.eco.casino.CasinoManager;
 import club.havocsmp.eco.commands.*;
 import club.havocsmp.eco.config.Settings;
-import club.havocsmp.eco.economy.BaltopManager;
-import club.havocsmp.eco.economy.EconomyManager;
+import club.havocsmp.eco.economy.EconomyHook;
 import club.havocsmp.eco.economy.InvestManager;
-import club.havocsmp.eco.economy.SellManager;
-import club.havocsmp.eco.economy.WorthManager;
+import club.havocsmp.eco.economy.ToolsWorthManager;
 import club.havocsmp.eco.listeners.CombatPearlListener;
 import club.havocsmp.eco.listeners.PlayerDataListener;
 import club.havocsmp.eco.listeners.SpawnEffectsListener;
@@ -30,15 +28,13 @@ public class HavocEco extends JavaPlugin {
 
     private Settings settings;
     private Database database;
-    private EconomyManager economy;
+    private EconomyHook economy;
     private RubyManager rubies;
     private InvestManager invest;
     private CasinoManager casino;
     private BossBarManager bossBar;
-    private WorthManager worth;
-    private SellManager sell;
-    private BaltopManager baltop;
     private AmethystToolManager amethystTools;
+    private ToolsWorthManager toolsWorth;
     private WagerManager wagers;
     private CoordHider coordHider;
     private Cooldowns cooldowns;
@@ -54,17 +50,16 @@ public class HavocEco extends JavaPlugin {
         this.database = new Database(this);
         this.database.load();
 
-        this.economy = new EconomyManager(this);
+        this.economy = new EconomyHook(this);
+        this.economy.setup();
         this.rubies = new RubyManager(this);
         this.invest = new InvestManager(this);
         this.casino = new CasinoManager(this);
         this.bossBar = new BossBarManager(this);
-        this.worth = new WorthManager(this);
-        this.worth.load();
-        this.sell = new SellManager(this);
-        this.baltop = new BaltopManager(this);
         this.amethystTools = new AmethystToolManager(this);
         this.amethystTools.load();
+        this.toolsWorth = new ToolsWorthManager(this);
+        this.toolsWorth.load();
         this.wagers = new WagerManager(this);
         this.coordHider = new CoordHider(this);
         this.cooldowns = new Cooldowns();
@@ -89,16 +84,11 @@ public class HavocEco extends JavaPlugin {
     }
 
     private void registerCommands() {
-        bind("balance", new BalanceCommand(this));
-        bind("pay", new PayCommand(this));
         bind("rubypay", new RubyPayCommand(this));
         bind("invest", new InvestCommand(this));
         bind("slots", new SlotsCommand(this));
         bind("jackpot", new JackpotCommand(this));
         bind("rubyshop", new RubyShopCommand(this));
-        bind("sell", new SellCommand(this));
-        bind("worth", new WorthCommand(this));
-        bind("baltop", new BaltopCommand(this));
         bind("live", new LiveCommand(this));
         bind("coords", new CoordsCommand(this));
         bind("coinflip", new CoinflipCommand(this));
@@ -129,9 +119,6 @@ public class HavocEco extends JavaPlugin {
         // Async periodic save.
         long ticks = settings.saveIntervalSeconds() * 20L;
         Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> database.saveIfDirty(), ticks, ticks);
-
-        // Baltop refresh every 2 minutes.
-        Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> baltop.refresh(), 100L, 20L * 120);
 
         // Invest auto-claim check every 30s (on main thread; economy touches player data).
         Bukkit.getScheduler().runTaskTimer(this, () -> {
@@ -165,14 +152,12 @@ public class HavocEco extends JavaPlugin {
     // ---- accessors ----
     public Settings settings() { return settings; }
     public Database database() { return database; }
-    public EconomyManager economy() { return economy; }
+    public EconomyHook economy() { return economy; }
     public RubyManager rubies() { return rubies; }
     public InvestManager invest() { return invest; }
     public CasinoManager casino() { return casino; }
-    public WorthManager worth() { return worth; }
-    public SellManager sell() { return sell; }
-    public BaltopManager baltop() { return baltop; }
     public AmethystToolManager amethystTools() { return amethystTools; }
+    public ToolsWorthManager toolsWorth() { return toolsWorth; }
     public WagerManager wagers() { return wagers; }
     public CoordHider coordHider() { return coordHider; }
     public Cooldowns cooldowns() { return cooldowns; }

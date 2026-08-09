@@ -1,0 +1,74 @@
+# =====================================================================
+#  Prices paid by amethyst AUTO-SELL tools per broken block.
+#  This is separate from Voyager's /worth so tools don't fight Voyager's economy.
+#  Tip: keep these slightly BELOW Voyager's /worth prices so tools are convenient
+#  but not a route around the intended sell balance.
+#  Any material NOT listed here will simply drop (not auto-sell).
+# =====================================================================
+PRICES:
+  # --- pickaxe stone family ---
+  STONE: 0.5
+  COBBLESTONE: 0.5
+  DEEPSLATE: 0.6
+  COBBLED_DEEPSLATE: 0.6
+  GRANITE: 0.7
+  DIORITE: 0.7
+  ANDESITE: 0.7
+  TUFF: 0.6
+  CALCITE: 1.0
+  NETHERRACK: 0.4
+  BASALT: 0.6
+  BLACKSTONE: 0.8
+
+  # --- ores ---
+  COAL_ORE: 5
+  DEEPSLATE_COAL_ORE: 7
+  IRON_ORE: 8
+  DEEPSLATE_IRON_ORE: 10
+  COPPER_ORE: 6
+  DEEPSLATE_COPPER_ORE: 8
+  GOLD_ORE: 15
+  DEEPSLATE_GOLD_ORE: 18
+  REDSTONE_ORE: 10
+  DEEPSLATE_REDSTONE_ORE: 12
+  LAPIS_ORE: 12
+  DEEPSLATE_LAPIS_ORE: 14
+  DIAMOND_ORE: 40
+  DEEPSLATE_DIAMOND_ORE: 45
+  EMERALD_ORE: 45
+  DEEPSLATE_EMERALD_ORE: 50
+  NETHER_QUARTZ_ORE: 8
+  NETHER_GOLD_ORE: 12
+  ANCIENT_DEBRIS: 120
+
+  # --- amethyst ---
+  AMETHYST_BLOCK: 3
+  AMETHYST_CLUSTER: 8
+  BUDDING_AMETHYST: 0
+
+  # --- shovel dirt family ---
+  DIRT: 0.3
+  GRASS_BLOCK: 0.4
+  COARSE_DIRT: 0.3
+  PODZOL: 0.5
+  MYCELIUM: 0.6
+  SAND: 0.4
+  RED_SAND: 0.5
+  GRAVEL: 0.5
+  CLAY: 0.8
+  SOUL_SAND: 0.6
+  SOUL_SOIL: 0.6
+  SNOW_BLOCK: 0.3
+  MUD: 0.4
+
+  # --- axe / sell axe wood family ---
+  OAK_LOG: 2
+  BIRCH_LOG: 2
+  SPRUCE_LOG: 2
+  JUNGLE_LOG: 2
+  ACACIA_LOG: 2
+  DARK_OAK_LOG: 2
+  MANGROVE_LOG: 2.5
+  CHERRY_LOG: 3
+  CRIMSON_STEM: 3
+  WARPED_STEM: 3

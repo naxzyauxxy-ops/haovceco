@@ -3,14 +3,12 @@ version: '${project.version}'
 main: club.havocsmp.eco.HavocEco
 api-version: '1.21'
 author: HavocSMP
-description: Fully customizable economy plugin with rubies, casino, invest, amethyst tools, wagers and more.
+description: Companion plugin for HavocSMP. Adds /invest, casino, rubies, amethyst tools, wagers, /live, /coords, cycling bossbar and combat/pearl/totem rules on top of Voyager.
+
+# Voyager provides the Vault economy; if either is missing we log a warning and disable money features.
+softdepend: [Vault, CuyVoyager]
 
 commands:
-  balance:
-    description: Check your or another player's balance.
-    aliases: [bal, money]
-  pay:
-    description: Pay another player money.
   rubypay:
     description: Transfer rubies to another player.
   invest:
@@ -21,14 +19,8 @@ commands:
     description: Enter or start a jackpot round.
   rubyshop:
     description: Open the ruby shop.
-  sell:
-    description: Open the sell menu, or /sell all | /sell hand.
-  worth:
-    description: Show the sell value of an item.
-  baltop:
-    description: View the money leaderboard (top 50).
   live:
-    description: Announce you are live (Media+).
+    description: Announce you are live (Media+ only).
   coords:
     description: Toggle hiding your coordinates.
   coinflip:

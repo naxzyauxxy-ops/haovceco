@@ -59,13 +59,9 @@ public class Database {
             String base = base(uuid);
             if (!data.contains(base)) {
                 data.set(base + ".name", name);
-                data.set(base + ".money", plugin.settings().startingMoney());
                 data.set(base + ".rubies", 0L);
-                data.set(base + ".moneySpent", 0.0);
-                data.set(base + ".moneyMade", 0.0);
                 dirty = true;
             } else {
-                // keep name fresh
                 data.set(base + ".name", name);
                 dirty = true;
             }
@@ -74,19 +70,7 @@ public class Database {
         }
     }
 
-    public double getMoney(UUID uuid) {
-        return data.getDouble(base(uuid) + ".money", 0.0);
-    }
-
-    public void setMoney(UUID uuid, double amount) {
-        lock.lock();
-        try {
-            data.set(base(uuid) + ".money", Math.max(0, amount));
-            dirty = true;
-        } finally {
-            lock.unlock();
-        }
-    }
+    // Money is stored by Voyager (via Vault) — not here. Rubies and other flags stay local.
 
     public long getRubies(UUID uuid) {
         return data.getLong(base(uuid) + ".rubies", 0L);
@@ -96,21 +80,6 @@ public class Database {
         lock.lock();
         try {
             data.set(base(uuid) + ".rubies", Math.max(0, amount));
-            dirty = true;
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    public double getStat(UUID uuid, String stat) {
-        return data.getDouble(base(uuid) + "." + stat, 0.0);
-    }
-
-    public void addStat(UUID uuid, String stat, double delta) {
-        lock.lock();
-        try {
-            double cur = data.getDouble(base(uuid) + "." + stat, 0.0);
-            data.set(base(uuid) + "." + stat, cur + delta);
             dirty = true;
         } finally {
             lock.unlock();

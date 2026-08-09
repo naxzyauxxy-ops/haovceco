@@ -23,6 +23,11 @@ public class JackpotCommand implements CommandExecutor {
             sender.sendMessage("Players only.");
             return true;
         }
+        String currencyArg = args.length >= 2 ? args[1].toLowerCase() : "money";
+        if (!plugin.economy().isReady() && !currencyArg.equals("rubies")) {
+            p.sendMessage(Text.color("&cMoney jackpot unavailable: economy plugin not detected. Try /jackpot <amount> rubies"));
+            return true;
+        }
         if (args.length < 1) {
             p.sendMessage(Text.color("&#f40d0dUsage: /jackpot <amount> [money|rubies]"));
             return true;
